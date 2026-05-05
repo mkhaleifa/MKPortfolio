@@ -1,0 +1,127 @@
+import { motion } from "framer-motion";
+import { ArrowRight, Download, Mail } from "lucide-react";
+import avatarImg from "@/assets/me.jpeg";
+
+const heroSkills =
+  "React | Next.js | Node.js | AI Integrations";
+
+const HeroSection = () => {
+  return (
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Particle-like background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_hsl(174_72%_50%_/_0.08)_0%,_transparent_70%)]" />
+        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-background to-transparent" />
+        {[...Array(14)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 rounded-full bg-primary/30"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.2, 0.6, 0.2],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="container mx-auto px-6 pt-24 relative z-10 max-w-5xl">
+        <div className="grid lg:grid-cols-2 gap-12 items-center justify-center mx-auto">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-xl mx-auto text-center lg:max-w-none"
+          >
+            <p className="text-primary text-lg mb-2 text-center lg:text-left">
+              Hi, I am
+            </p>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+              Mohamed <span className="text-gradient">Khalifa</span>
+            </h1>
+            <p className="text-primary text-xl font-semibold mb-4 animate-breathe">
+              AI Full Stack Developer
+            </p>
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.15 }}
+              className="text-muted-foreground mb-4 font-mono text-sm tracking-wide"
+            >
+              {heroSkills} <span className="block font-semibold text-primary animate-breathe">
+                Available Now!
+              </span>
+            </motion.p>
+            <p className="text-muted-foreground mb-4">Based in Egypt • Open to work in Saudi Arabia/UAE • Remote / On-site / Hybrid</p>
+            <p className="text-muted-foreground max-w-lg mb-6 leading-relaxed">
+I build scalable, user-focused web applications that combine modern frontend development, reliable backend systems, and practical AI features. I’m especially interested in products that improve customer experience, business operations, and digital services.
+
+            </p>
+
+            {/* CTA buttons */}
+            <div className="flex flex-wrap gap-4 items-center justify-center lg:justify-start">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
+              >
+                View Projects <ArrowRight size={16} />
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-foreground hover:border-primary transition-colors"
+              >
+                Get in Touch <Mail size={16} />
+              </a>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex justify-center"
+          >
+            <div className="relative">
+              <div className="w-72 h-72 md:w-80 md:h-80 rounded-2xl overflow-hidden glow-border animate-float bg-[#111] flex items-center justify-center">
+                <img
+                  src={avatarImg}
+                  alt="Mohamed Khalifa"
+                  className="w-full h-full object-cover"
+                  width={320}
+                  height={320}
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+              <div className="absolute -bottom-3 left-0 right-0 flex items-center justify-between px-3">
+                <a
+                  href="resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-background/90 px-4 py-2 text-sm font-semibold text-primary shadow-sm shadow-primary/10 hover:bg-primary/10 transition-all"
+                >
+                  Resume
+                  <Download size={16} />
+                </a>
+                <div className="bg-card border border-border rounded-full px-4 py-2 flex items-center gap-2 shadow-lg shadow-primary/10">
+                  <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-sm text-foreground">Open to Work</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;
